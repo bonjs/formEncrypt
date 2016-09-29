@@ -1,0 +1,2 @@
+# formEncrypt
+对使用ajaxSubmit提交的表单中添加encrypt=true的表单域进行加密
