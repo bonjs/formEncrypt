@@ -6,19 +6,19 @@
 
 <form id=f>
 	<input type="text" name="username" /><br>
-	<input type="password" name="password" /><br>
-	<button>提交</button>
-</form>
+	<input type="password" name="password" encrypt=true /><br>
 
+	<button type="button">提交</button>
+</form>
 	<script src="node_modules/jquery/dist/jquery.js"></script>	
 	<script src="node_modules/jquery-form/jquery.form.js"></script>
-	<script src="node_modules/jsencrypt/src/jsencrypt.js"></script>
+	<script src="node_modules/jsencrypt/bin/jsencrypt.js"></script>
 	
 	<script src="src/jquery.form.encrypt.js"></script>
 	<script>
 		$('button').click(function() {
-			
 			$('#f').ajaxSubmit({
+				type: 'post',
 				success: function() {
 					alert('success');
 				}
