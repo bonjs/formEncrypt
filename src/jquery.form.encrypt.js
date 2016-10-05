@@ -14,9 +14,9 @@ $.fn.ajaxSubmit = function() {
 	
 	return function(opt) {
 		var form = this;
-		var originalBeforeSubmit = opt.beforeSubmit || function() {};
+		var originalBeforeSubmit = opt.beforeSubmit;
 		opt.beforeSubmit = function(fields) { 
-			var result = originalBeforeSubmit.apply(this, arguments);
+			var result = originalBeforeSubmit && originalBeforeSubmit.apply(this, arguments);
 			
 			fields.forEach(function(fieldObj, i) {
 				if(!!form[0][fieldObj.name].getAttribute('encrypt') == true) { 
@@ -26,6 +26,6 @@ $.fn.ajaxSubmit = function() {
 			
 			return result;
 		};
-		originalAjaxSubmit.apply(this, arguments);
+		return originalAjaxSubmit.apply(this, arguments);
 	};
 }();
