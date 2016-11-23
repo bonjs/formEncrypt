@@ -67,4 +67,4 @@ $('button').click(function() {
 
 通过ajaxSubmit提交表单时,添加了encrypt=true的字段发送的数据会自动进行加密
 
-<img src="/image/formEncryp.png">
+<img src="http://www.bonjs.com/image/formEncryp.png">
