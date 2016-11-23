@@ -8,42 +8,6 @@ git clone https://github.com/bonjs/formEncrypt.git
 node app
 ```
 
-### 源码
-```javascript
-/**
- * 对使用ajaxSubmit提交的表单中添加encrypt=true的表单域进行加密, 重写ajaxSubmit方法
- * @author 	Alex
- * @date    二○一六年九月二十八日
- * @version 1.0
- * 使用方式: 对要加密的表单域标签中添加encrypt=true,通过ajaxSubmit提交表单时自动会对该域加密
- */
-$.fn.ajaxSubmit = function() {
-	var f = $.fn.ajaxSubmit;
-
-	// 公钥
-	var FD_f1342fFDFdsaf = 'MIGfMA0GCSqGSIb3DQfdsafdsafdsDCBiQKBgQDkAh06uqqrA8qIsyd98/E1p4oL0GAzUifdsafdsaOZpCwAdrh+I77Ws14u2UJWz4cBNnZBnS5hX/kWeUizGkPbW2AfdsafdsakuFfdsafdsanTJUQIDAQAB';
-	var encrypt = new JSEncrypt();
-	encrypt.setPublicKey(FD_f1342fFDFdsaf);
-	
-	return function(opt) {
-		var form = this;
-		var beforeSubmit = opt.beforeSubmit;
-		opt.beforeSubmit = function(fields) {
-			var result = beforeSubmit && beforeSubmit.apply(this, arguments);
-
-			fields.forEach(function(fieldObj, i) {
-				if(!!form[0][fieldObj.name].getAttribute('encrypt') == true) { 
-					fieldObj.value = encrypt.encrypt(fieldObj.value);
-				}
-			});
-
-			return result;
-		};
-		f.apply(this, arguments);
-	};
-}();
-```
-
 ### 使用方式
 #### 表单(在要加密码的表单域中添加encrypt=true)
 ```html
