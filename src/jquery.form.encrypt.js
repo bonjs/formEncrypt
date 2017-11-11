@@ -6,7 +6,7 @@
  * 使用方式: 对要加密的表单域标签中添加encrypt=true,通过ajaxSubmit提交表单时自动会对该域加密
  */
 $.fn.ajaxSubmit = function() {
-	var f = $.fn.ajaxSubmit;
+    var f = $.fn.ajaxSubmit;
 	
     var encrypt = new JSEncrypt();
     encrypt.setPublicKey(f.publicKey);
